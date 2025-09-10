@@ -1,0 +1,161 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:70.85pt 3.0cm 70.85pt 3.0cm;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=ES-CO style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal>&lt;!DOCTYPE html&gt;</p>
+
+<p class=MsoNormal>&lt;html&gt;</p>
+
+<p class=MsoNormal>&lt;head&gt;</p>
+
+<p class=MsoNormal>  &lt;title&gt;Calculadora Financiera Yulian&lt;/title&gt;</p>
+
+<p class=MsoNormal>  &lt;style&gt;</p>
+
+<p class=MsoNormal>    body { font-family: Arial; padding: 20px; }</p>
+
+<p class=MsoNormal>    input { margin: 5px; width: 100px; }</p>
+
+<p class=MsoNormal>    table { border-collapse: collapse; margin-top: 20px; }</p>
+
+<p class=MsoNormal>    td, th { border: 1px solid #ccc; padding: 8px; }</p>
+
+<p class=MsoNormal>  &lt;/style&gt;</p>
+
+<p class=MsoNormal>&lt;/head&gt;</p>
+
+<p class=MsoNormal>&lt;body&gt;</p>
+
+<p class=MsoNormal>  &lt;h2&gt;Calculadora de Ahorro Mensual&lt;/h2&gt;</p>
+
+<p class=MsoNormal>  &lt;div id=&quot;formulario&quot;&gt;&lt;/div&gt;</p>
+
+<p class=MsoNormal>  &lt;button
+onclick=&quot;calcular()&quot;&gt;Calcular&lt;/button&gt;</p>
+
+<p class=MsoNormal>  &lt;div id=&quot;resultado&quot;&gt;&lt;/div&gt;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>  &lt;script&gt;</p>
+
+<p class=MsoNormal>    const meses = [&quot;Septiembre&quot;,
+&quot;Octubre&quot;, &quot;Noviembre&quot;, &quot;Diciembre&quot;];</p>
+
+<p class=MsoNormal>    const ingresos = [1874000, 2774000, 1874000, 2774000];</p>
+
+<p class=MsoNormal>    const arriendos = [400000, 650000, 400000, 650000];</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>    let formulario = document.getElementById(&quot;formulario&quot;);</p>
+
+<p class=MsoNormal>    meses.forEach((mes, i) =&gt; {</p>
+
+<p class=MsoNormal>      formulario.innerHTML += `&lt;h3&gt;${mes}&lt;/h3&gt;</p>
+
+<p class=MsoNormal>        Gastos comunes: &lt;input type=&quot;number&quot;
+id=&quot;gcom${i}&quot; value=&quot;0&quot;&gt;&lt;br&gt;</p>
+
+<p class=MsoNormal>        Gastos adicionales: &lt;input
+type=&quot;number&quot; id=&quot;gadd${i}&quot; value=&quot;0&quot;&gt;&lt;br&gt;</p>
+
+<p class=MsoNormal>        Ingresos adicionales: &lt;input
+type=&quot;number&quot; id=&quot;ingadd${i}&quot;
+value=&quot;0&quot;&gt;&lt;br&gt;`;</p>
+
+<p class=MsoNormal>    });</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>    function calcular() {</p>
+
+<p class=MsoNormal>      let resultado =
+&quot;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Mes&lt;/th&gt;&lt;th&gt;Ingreso&lt;/th&gt;&lt;th&gt;Gastos&lt;/th&gt;&lt;th&gt;Saldo&lt;/th&gt;&lt;th&gt;Ahorro&lt;/th&gt;&lt;/tr&gt;&quot;;</p>
+
+<p class=MsoNormal>      let ahorroTotal = 0;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>      meses.forEach((mes, i) =&gt; {</p>
+
+<p class=MsoNormal>        let ingreso = ingresos[i] +
+Number(document.getElementById(ingadd${i}).value);</p>
+
+<p class=MsoNormal>        let gastos = arriendos[i] +
+Number(document.getElementById(gcom${i}).value) +
+Number(document.getElementById(gadd${i}).value);</p>
+
+<p class=MsoNormal>        let saldo = ingreso - gastos;</p>
+
+<p class=MsoNormal>        let ahorro = saldo &gt; 0 ? saldo : 0;</p>
+
+<p class=MsoNormal>        ahorroTotal += ahorro;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>        resultado +=
+&lt;tr&gt;&lt;td&gt;${mes}&lt;/td&gt;&lt;td&gt;${ingreso}&lt;/td&gt;&lt;td&gt;${gastos}&lt;/td&gt;&lt;td&gt;${saldo}&lt;/td&gt;&lt;td&gt;${ahorro}&lt;/td&gt;&lt;/tr&gt;;</p>
+
+<p class=MsoNormal>      });</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>      resultado += &lt;tr&gt;&lt;td
+colspan=&quot;4&quot;&gt;&lt;strong&gt;Ahorro total hasta
+diciembre&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;${ahorroTotal}&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;;</p>
+
+<p class=MsoNormal>     
+document.getElementById(&quot;resultado&quot;).innerHTML = resultado;</p>
+
+<p class=MsoNormal>    }</p>
+
+<p class=MsoNormal>  &lt;/script&gt;</p>
+
+<p class=MsoNormal>&lt;/body&gt;</p>
+
+<p class=MsoNormal>&lt;/html&gt;</p>
+
+</div>
+
+</body>
+
+</html>
